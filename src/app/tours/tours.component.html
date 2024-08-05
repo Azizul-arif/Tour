@@ -1,0 +1,36 @@
+
+
+<h1 class="mt-5 text-center">Our Tours</h1>
+
+<div class="container">
+ <div class="row g-5 d-flex align-items-stretch ">
+  <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch"
+   *ngFor="let tour of tourData">
+   <div class="card w-100  col-4 px-2 mb-4 "
+    style="width: 25rem;">
+    <img class="tour-image" src="{{tour.image}}">
+    <span
+     class="text center btn btn-warning text-white mt-3">{{tour.price}}</span>
+
+    <div class="card-body ">
+     <h4 class=" title">{{tour.title}}</h4>
+     <p>{{isReadMore[tour.id] ? tour.description : tour.description
+      |
+      slice:0:250}}</p>
+
+     <button *ngIf="tour.description.length > 250" class="text-warning nav-link"
+      (click)="toggleReadMore(tour.id)">
+      {{isReadMore[tour.id] ? 'Read Less' : '....Read More'}}
+     </button>
+
+     <button class="btn btn-warning  text-center"
+      (click)="delete(tour.id)">Not
+      Interested</button>
+    </div>
+
+   </div>
+
+  </div>
+ </div>
+
+</div>
